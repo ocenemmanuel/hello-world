@@ -1,0 +1,139 @@
+
+import java.util.Scanner;
+public class example {
+	public static void main(String[]args){
+	Scanner Weed=new Scanner(System.in);
+	double Eunknown;
+	double Nunknown;
+	double ER,EQ,NQ;	
+	double EP,NP,NR;
+	double CEQR;
+	double CNQR;
+	double CERP;
+	double CNRP;
+	double CEPQ;
+	double CNPQ;
+	double BQR;
+	double BRP;
+	double BPQ;
+	double BQP;
+	double BRQ;
+	double BPR;
+	System.out.println("northings of Q ");
+	NQ=Weed.nextDouble();
+	System.out.println("northings of R");
+	NR=Weed.nextDouble();
+	System.out.println("northings of P");
+	NP=Weed.nextDouble();
+	System.out.println("eastings of Q");
+	EQ=Weed.nextDouble();
+	System.out.println("eastings of R");
+	ER=Weed.nextDouble();
+	System.out.println("eastings of P");
+	EP=Weed.nextDouble();
+	CEQR=ER-EQ;
+	CNQR=NR-NQ;
+	double d=CEQR/CNQR;
+	if(d<0){d=-d;};
+	BQR=Math.toDegrees(Math.atan(d));
+	System.out.println(BQR);
+	if(CEQR<0&&CNQR>0)
+	{System.out.println(360-BQR);}
+	else{System.out.println(180-BQR);}
+	if(CEQR<0&&CNQR<0){System.out.println(180+BQR);}
+	CERP=EP-ER;
+	CNRP=NP-NR;
+	double e=CERP/CNRP;
+	if(e<0){e=-e;};
+	BRP=Math.toDegrees(Math.atan(e));
+	System.out.println(e);
+	System.out.println(BRP);
+	if(CERP<0&&CNRP>0)
+	{System.out.println(360-BRP);}
+	else{System.out.println(180-BRP);}
+	if(CERP<0&&CNRP<0){System.out.println(180+BRP);}
+	CEPQ=EQ-EP;
+	CNPQ=NQ-NP;
+	double f=CEPQ/CNPQ;
+	if(f<0){f=-f;};
+	BPQ=Math.toDegrees(Math.atan(f));
+	System.out.println(f);
+	System.out.println(BPQ);
+	if(CERP<0&&CNRP>0)
+	{System.out.println(360-BPQ);}
+	else{System.out.println(180-BPQ);}
+	if(CERP<0&&CNRP<0){System.out.println(180+BPQ);};
+	if(BPQ<180){BQP=BPQ+180;}
+	else{BQP=BPQ-180;};
+	if(BQR<180){BRQ=BQR+180;}
+	else{BRQ=BQR-180;};
+	if(BRP<180){BPR=BRP+180;}
+	else{BPR=BRP-180;};
+	double PQR;
+	double QRP;
+	double RPQ;
+	PQR=BQP-BQR;
+	QRP=BRQ-BRP;
+	RPQ=BPR-BPQ;
+	System.out.println(QRP);
+	double adeg;
+	double amin;
+	double asecs;
+	System.out.println("put degrees of A");
+	adeg=Weed.nextDouble();
+	System.out.println("put minutes of A");
+	amin=Weed.nextDouble();
+	System.out.println("put seconds of A");
+	asecs=Weed.nextDouble();
+	double A;
+	A=adeg+(amin/60)+(asecs/3600);
+	double bdeg;
+	double bmin;
+	double bsecs;
+	System.out.println("put degrees of B");
+	bdeg=Weed.nextDouble();
+	System.out.println("put minutes of B");
+	bmin=Weed.nextDouble();
+	System.out.println("put seconds of B");
+	bsecs=Weed.nextDouble();
+	double B;
+	B=bdeg+(bmin/60)+(bsecs/3600);
+	double cdeg;
+	double cmin;
+	double csecs;
+	System.out.println("put degrees of C");
+	cdeg=Weed.nextDouble();
+	System.out.println("put minutes of C");
+	cmin=Weed.nextDouble();
+	System.out.println("put seconds of C");
+	csecs=Weed.nextDouble();
+	double C;
+	C=cdeg+(cmin/60)+(csecs/3600);
+double K1;
+double K2;
+double K3;
+K1=1/(1/Math.tan(PQR)-1/Math.tan(B));
+K2=1/(1/Math.tan(QRP)-1/Math.tan(C));
+K3=(1/Math.tan(RPQ)-1/Math.tan(A));	
+	Eunknown=(K1*EQ+K2*ER+K3*EP)/(K1+K2+K3);
+	Nunknown=(K1*NQ+K2*NR+K3*NP)/(K1+K2+K3);
+	System.out.println("unknown eastings");
+	System.out.println(Eunknown);
+	System.out.println("unknown northings");
+	System.out.println(Nunknown);
+
+	
+	}
+	
+	
+	
+	}
+
+
+
+
+
+
+
+
+
