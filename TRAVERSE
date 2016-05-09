@@ -1,0 +1,39 @@
+package logic;
+
+
+
+
+public class Traverse {
+
+	
+
+	static Northings Trav = new Northings();
+	static Eastings East = new Eastings();
+	static Inputa input = new Inputa();
+	private static boolean Traverse;
+	
+
+	public static void execute(){
+		
+
+	 				Northings.setRad(Inputa.array2);
+	 				Eastings.setRad(Inputa.array2);
+	 				
+	 				Northings.getChN(Inputa.array,Northings.array4);
+	 				Eastings.getChE(Inputa.array,Eastings.array4);
+	 				
+	 				Trav.sumDistance(Inputa.array);
+	 				East.sumDistance(Inputa.array);
+	 				
+	 				Northings.getCorrection(Inputa.array);
+	 				Eastings.getCorrection(Inputa.array);
+	 				
+	 				Northings.getCortdChN(Inputa.array.size());
+	 				Eastings.getCortdChE(Inputa.array.size());
+	 				
+	 				Northings.getNorthings();
+	 				Eastings.getEastings();    
+	}
+
+}
+
