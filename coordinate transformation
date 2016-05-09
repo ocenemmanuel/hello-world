@@ -1,0 +1,420 @@
+import java.util.*;
+
+public class CoordinateTransformation {
+
+	public void CoordinateConversion() {
+		// TODO - implement CoordinateTransformation.CoordinateConversion
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param UTM
+	 */
+	public double[] utm2LatLon(String UTM) {
+		// TODO - implement CoordinateTransformation.utm2LatLon
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 */
+	public String latLon2UTM(double latitude, double longitude) {
+		// TODO - implement CoordinateTransformation.latLon2UTM
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 */
+	private void validate(double latitude, double longitude) {
+		// TODO - implement CoordinateTransformation.validate
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param latitude
+	 * @param longitude
+	 */
+	public String latLon2MGRUTM(double latitude, double longitude) {
+		// TODO - implement CoordinateTransformation.latLon2MGRUTM
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param MGRUTM
+	 */
+	public double[] mgrutm2LatLon(String MGRUTM) {
+		// TODO - implement CoordinateTransformation.mgrutm2LatLon
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param degree
+	 */
+	public double degreeToRadian(double degree) {
+		// TODO - implement CoordinateTransformation.degreeToRadian
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param radian
+	 */
+	public double radianToDegree(double radian) {
+		// TODO - implement CoordinateTransformation.radianToDegree
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param a
+	 * @param b
+	 */
+	private double POW(double a, double b) {
+		// TODO - implement CoordinateTransformation.POW
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param value
+	 */
+	private double SIN(double value) {
+		// TODO - implement CoordinateTransformation.SIN
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param value
+	 */
+	private double COS(double value) {
+		// TODO - implement CoordinateTransformation.COS
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * 
+	 * @param value
+	 */
+	private double TAN(double value) {
+		// TODO - implement CoordinateTransformation.TAN
+		throw new UnsupportedOperationException();
+	}
+
+
+	private class LatLon2UTM {
+
+		/**
+		 * Lat Lon to UTM variables
+		 * 
+		 * equatorial radius
+		 */
+		double equatorialRadius = 6378137;
+		/**
+		 * polar radius
+		 */
+		double polarRadius = 6356752.314;
+		/**
+		 * flattening
+		 */
+		double flattening = 0.00335281066474748;
+		/**
+		 * (equatorialRadius-polarRadius)/equatorialRadius;
+		 * 
+		 * inverse flattening 1/flattening
+		 */
+		double inverseFlattening = 298.257223563;
+		/**
+		 * 1/flattening;
+		 * 
+		 * Mean radius
+		 */
+		double rm = POW(equatorialRadius * polarRadius, 1 / 2.0);
+		/**
+		 * scale factor
+		 */
+		double k0 = 0.9996;
+		/**
+		 * eccentricity
+		 */
+		double e = Math.sqrt(1 - POW(polarRadius / equatorialRadius, 2));
+		double e1sq = e * e / (1 - e * e);
+		double n = (equatorialRadius - polarRadius)
+	        / (equatorialRadius + polarRadius);
+		/**
+		 * r curv 1
+		 */
+		double rho = 6368573.744;
+		/**
+		 * r curv 2
+		 */
+		double nu = 6389236.914;
+		/**
+		 * Calculate Meridional Arc Length
+		 * Meridional Arc
+		 */
+		double S = 5103266.421;
+		double A0 = 6367449.146;
+		double B0 = 16038.42955;
+		double C0 = 16.83261333;
+		double D0 = 0.021984404;
+		double E0 = 0.000312705;
+		/**
+		 * Calculation Constants
+		 * Delta Long
+		 */
+		double p = -0.483084;
+		double sin1 = 4.84814E-06;
+		/**
+		 * Coefficients for UTM Coordinates
+		 */
+		double K1 = 5101225.115;
+		double K2 = 3750.291596;
+		double K3 = 1.397608151;
+		double K4 = 214839.3105;
+		double K5 = -2.995382942;
+		double A6 = -1.00541E-07;
+
+		/**
+		 * 
+		 * @param latitude
+		 * @param longitude
+		 */
+		public String convertLatLonToUTM(double latitude, double longitude) {
+			// TODO - implement LatLon2UTM.convertLatLonToUTM
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param latitude
+		 * @param longitude
+		 */
+		protected void setVariables(double latitude, double longitude) {
+			// TODO - implement LatLon2UTM.setVariables
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param longitude
+		 */
+		protected String getLongZone(double longitude) {
+			// TODO - implement LatLon2UTM.getLongZone
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param latitude
+		 */
+		protected double getNorthing(double latitude) {
+			// TODO - implement LatLon2UTM.getNorthing
+			throw new UnsupportedOperationException();
+		}
+
+		protected double getEasting() {
+			// TODO - implement LatLon2UTM.getEasting
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+
+	private class LatLon2MGRUTM extends LatLon2UTM {
+
+		/**
+		 * 
+		 * @param latitude
+		 * @param longitude
+		 */
+		public String convertLatLonToMGRUTM(double latitude, double longitude) {
+			// TODO - implement LatLon2MGRUTM.convertLatLonToMGRUTM
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+
+	private class MGRUTM2LatLon extends UTM2LatLon {
+
+		/**
+		 * 
+		 * @param mgrutm
+		 */
+		public double[] convertMGRUTMToLatLong(String mgrutm) {
+			// TODO - implement MGRUTM2LatLon.convertMGRUTMToLatLong
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+
+	private class UTM2LatLon {
+
+		double easting;
+		double northing;
+		int zone;
+		String southernHemisphere = "ACDEFGHJKLM";
+		double arc;
+		double mu;
+		double ei;
+		double ca;
+		double cb;
+		double cc;
+		double cd;
+		double n0;
+		double r0;
+		double _a1;
+		double dd0;
+		double t0;
+		double Q0;
+		double lof1;
+		double lof2;
+		double lof3;
+		double _a2;
+		double phi1;
+		double fact1;
+		double fact2;
+		double fact3;
+		double fact4;
+		double zoneCM;
+		double _a3;
+		double b = 6356752.314;
+		double a = 6378137;
+		double e = 0.081819191;
+		double e1sq = 0.006739497;
+		double k0 = 0.9996;
+
+		/**
+		 * 
+		 * @param latZone
+		 */
+		protected String getHemisphere(String latZone) {
+			// TODO - implement UTM2LatLon.getHemisphere
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param UTM
+		 */
+		public double[] convertUTMToLatLong(String UTM) {
+			// TODO - implement UTM2LatLon.convertUTMToLatLong
+			throw new UnsupportedOperationException();
+		}
+
+		protected void setVariables() {
+			// TODO - implement UTM2LatLon.setVariables
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+
+	private class Digraphs {
+
+		private Map digraph1 = new Hashtable();
+		private Map digraph2 = new Hashtable();
+		private String[] digraph1Array = { "A", "B", "C", "D", "E", "F", "G", "H",
+	        "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X",
+	        "Y", "Z" };
+		private String[] digraph2Array = { "V", "A", "B", "C", "D", "E", "F", "G",
+	        "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V" };
+
+		public Digraphs() {
+			// TODO - implement Digraphs.Digraphs
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param letter
+		 */
+		public int getDigraph1Index(String letter) {
+			// TODO - implement Digraphs.getDigraph1Index
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param letter
+		 */
+		public int getDigraph2Index(String letter) {
+			// TODO - implement Digraphs.getDigraph2Index
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param longZone
+		 * @param easting
+		 */
+		public String getDigraph1(int longZone, double easting) {
+			// TODO - implement Digraphs.getDigraph1
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param longZone
+		 * @param northing
+		 */
+		public String getDigraph2(int longZone, double northing) {
+			// TODO - implement Digraphs.getDigraph2
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+
+	private class LatZones {
+
+		private char[] letters = { 'A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K',
+	        'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Z' };
+		private int[] degrees = { -90, -84, -72, -64, -56, -48, -40, -32, -24, -16,
+	        -8, 0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 84 };
+		private char[] negLetters = { 'A', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K',
+	        'L', 'M' };
+		private int[] negDegrees = { -90, -84, -72, -64, -56, -48, -40, -32, -24,
+	        -16, -8 };
+		private char[] posLetters = { 'N', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+	        'X', 'Z' };
+		private int[] posDegrees = { 0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 84 };
+		private int arrayLength = 22;
+
+		public LatZones() {
+			// TODO - implement LatZones.LatZones
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param letter
+		 */
+		public int getLatZoneDegree(String letter) {
+			// TODO - implement LatZones.getLatZoneDegree
+			throw new UnsupportedOperationException();
+		}
+
+		/**
+		 * 
+		 * @param latitude
+		 */
+		public String getLatZone(double latitude) {
+			// TODO - implement LatZones.getLatZone
+			throw new UnsupportedOperationException();
+		}
+
+	}
+
+}
