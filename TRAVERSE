@@ -36,4 +36,350 @@ public class Traverse {
 	}
 
 }
+package logic;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+
+public class Inputa {
+
+	static int i;
+	int n;
+	static Scanner scan = new Scanner(System.in);
+	public static double[] array ;//lengths of traverse
+	public static double[] array2;//angles
+	
+	public void setNumStations(){
+		String ent = JOptionPane.showInputDialog("Enter the number of traverse stations");
+		n = Integer.parseInt(ent);
+		while(n<0)
+		{
+			String z = JOptionPane.showInputDialog("Error.Re-enter number of traverse stations");
+			n = Integer.parseInt(z);
+		}
+		}
+	
+	public static void setDistance(int p){
+        int j;
+		array = new double[p];
+		for(j=0;j<p;j++){
+			String nt = JOptionPane.showInputDialog("Enter distances");
+			array[j] = Double.parseDouble(nt);
+			
+			while(array[j]<0)
+			{
+				String x = JOptionPane.showInputDialog("Error.Re-enter Distance");
+				array[j] = Double.parseDouble(x);
+			}
+		}
+		return;
+		}
+	
+	public static void setBearings(int q){
+		int j;
+		array2 = new double[q];
+		for(j=0;j<q;j++){
+			String nt = JOptionPane.showInputDialog("Enter the bearings");
+			array2[j] = Double.parseDouble(nt);
+			while(array2[j]<0||array2[j]>360)
+			{
+				String w = JOptionPane.showInputDialog("Error.Re-enter the bearing");
+				array2[j] = Double.parseDouble(w);
+			}
+		}
+		return;
+		}
+	
+	public int  getNumStations(){
+		return n;
+	}
+	
+	public double[] getDistance(){
+		for( i = 0; i < n; i++){
+ 	        System.out.println(array[i]);
+ 	    }
+		return array;
+	}
+	
+	public double getBearings(){
+		for( i = 0; i < n; i++){
+ 	        System.out.println(array2[i]);
+ 	    }
+		return array2[i];
+	}
+}
+package logic;
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+public class Eastings {
+	static int i;
+    int k;
+    Scanner group = new Scanner(System.in);
+    
+	static double[] array3;//deg to rads
+	static double[] array4;//sin
+	static double[] array5;//change in northings.
+	static double[] array6;//corrections applied
+	static double[] array7;//corrected change in northings
+	static double E1;
+	static double E2;
+	static double ErrorE;
+	static double DiffE;
+	static double totalDist;
+	static double totalChE;
+	static double []Eastings = new double[50];
+	
+	public void enter(int k){
+	    System.out.println("value of n is:"+k);
+	}
+	
+	public void ent(double[] arr){
+		for(int i =0; i <arr.length; i++)	
+	    System.out.println("value of arr is:"+arr[i]);
+		return;
+	}
+				
+	public void setStations(){
+		String M=JOptionPane.showInputDialog("Enter Eastings of the opening station");
+	     E1 =  Double.parseDouble(M);
+	     while(E1<0)
+			{
+				String w = JOptionPane.showInputDialog("Error.Re-enter Eastings of the opening station");
+				E1 = Double.parseDouble(w);
+			}
+	     String N=JOptionPane.showInputDialog("Enter Eastings of the closing station");
+	     E2 =  Double.parseDouble(N);
+	     while(E2<0)
+			{
+				String x = JOptionPane.showInputDialog("Error.Re-enter Eastings of the closing station");
+				E2 = Double.parseDouble(x);
+			}
+	     
+	}
+	
+	public static void setRad(double[] array2,int k){
+		int j;
+		 array3 = new double[k];
+		 array4 = new double[k];
+		for( j=0 ;j<k ;j++)
+		{
+		   array3[j] = Math.toRadians(array2[j]);
+		}
+		for( j=0 ;j<array3.length ;j++){
+		   array4[j] = Math.sin(array3[j]);
+		}
+	    return;
+	}
+	 
+	public static void getChE(double[] q,double[] array4,int k){
+		System.out.println("value of change in Eastings");
+		int i;
+		 array5 = new double[k];
+	for(i=0;i<q.length;i++){
+		array5[i] = array4[i]*q[i];
+		System.out.println(array5[i]);
+	}
+	return ;
+	}
+	
+	public double sumDistance(double[] r){
+	totalDist=0;
+	for( i =0; i < r.length; i++)
+	{
+		totalDist += r[i]; 				
+	}
+	return totalDist;
+	}
+	
+	public static void getCorrection(double[]s,int k){
+	totalChE = 0;
+	 array6 = new double[k];
+	for( i =0; i < s.length; i++)		
+	{
+		totalChE += array5[i]; 				
+	}
+	DiffE = E2 - E1;
+	ErrorE = DiffE - totalChE;
+	for( i =0; i < s.length; i++){
+		array6[i] = (ErrorE/totalDist)*s[i];
+	}
+	System.out.println("corrections to Eastings");
+	for( i  = 0; i < s.length; i++){
+        System.out.println(array6[i]);
+    }
+	  return ;
+	}
+	
+	public static void getCortdChE(int k){
+		int i;
+		 array7 = new double[k];
+	for(i=0;i<array6.length;i++){
+		array7[i] = array6[i]+array5[i];
+	}
+	System.out.println("value of corrected change in Eastings");
+	for( i  = 0; i < array7.length; i++){
+        System.out.println(array7[i]);
+        }
+	return ;
+	}
+	
+	public static void getEastings(){
+	System.out.println("Eastings");
+	int i;
+	double sum = 0;
+	for(i=0; i<array7.length; i++){
+		sum +=array7[i];
+		double[] totalCN = {sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum};
+		double[] totalDis = {E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1,E1};
+		Eastings[i]=totalDis[i]+totalCN[i];
+		System.out.println(Eastings[i]);			
+	}
+	return;
+	}
+	
+
+
+	}
+
+package logic;
+
+import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
+
+public class Northings extends Inputa {
+	
+	    static int i;
+	    int k;
+	    Scanner josh = new Scanner(System.in);
+	    
+		static double[] array3;//deg to rads
+		static double[] array4;//cos
+		static double[] array5;//change in northings.
+		static double[] array6;//corrections applied
+		static double[] array7;//corrected change in northings
+		static double N1;
+		static double N2;
+		static double ErrorN;
+		static double DiffN;
+		static double totalDist;
+		static double totalChN;
+		static double []Northings = new double[50];
+		
+		public void enter(int k){
+		    System.out.println("value of n is:"+k);
+		}
+		
+		public void ent(double[] arr){
+			for(int i =0; i <arr.length; i++)	
+		    System.out.println("value of arr is:"+arr[i]);
+			return;
+		}
+					
+		public void setStations(){
+			String M=JOptionPane.showInputDialog("Enter Northings of the opening station");
+		     N1 =  Double.parseDouble(M);
+		     while(N1<0)
+				{
+					String w = JOptionPane.showInputDialog("Error.Re-enter Northings of the opening station");
+					N1 = Double.parseDouble(w);
+				}
+		    String N=JOptionPane.showInputDialog("Enter Northings of the closing station");
+		     N2 =  Double.parseDouble(N);
+		     while(N2<0)
+				{
+					String x = JOptionPane.showInputDialog("Error.Re-enter Northings of the closing station");
+					N2 = Double.parseDouble(x);
+				}
+		}
+		
+		public static void setRad(double[] array2,int k){
+			int j;
+			 array3 = new double[k];
+			 array4 = new double[k];
+			for( j=0 ;j<k ;j++)
+			{
+			   array3[j] = Math.toRadians(array2[j]);
+			}
+			for( j=0 ;j<array3.length ;j++){
+			   array4[j] = Math.cos(array3[j]);
+			}
+		    return;
+		}
+		 
+		public static void getChN(double[] q,double[] array4,int k){
+			System.out.println("value of change in northings");
+			int i;
+			 array5 = new double[k];
+		for(i=0;i<q.length;i++){
+			array5[i] = array4[i]*q[i];
+			System.out.println(array5[i]);
+		}
+		return ;
+		}
+		
+		public double sumDistance(double[] r){
+		totalDist=0;
+		for( i =0; i < r.length; i++)
+		{
+			totalDist += r[i]; 				
+		}
+		return totalDist;
+		}
+		
+		public static void getCorrection(double[]s,int k){
+		totalChN = 0;
+		 array6 = new double[k];
+		for( i =0; i < s.length; i++)		
+		{
+			totalChN += array5[i]; 				
+		}
+		DiffN = N2 - N1;
+		ErrorN = DiffN - totalChN;
+		for( i =0; i < s.length; i++){
+			array6[i] = (ErrorN/totalDist)*s[i];
+		}
+		System.out.println("corrections to northings");
+		for( i  = 0; i < s.length; i++){
+            System.out.println(array6[i]);
+        }
+		  return ;
+		}
+		
+		public static void getCortdChN(int k){
+			int i;
+			 array7 = new double[k];
+		for(i=0;i<array6.length;i++){
+			array7[i] = array6[i]+array5[i];
+		}
+		System.out.println("value of corrected change in northings");
+		for( i  = 0; i < array7.length; i++){
+            System.out.println(array7[i]);
+            }
+		return ;
+		}
+		
+		public static void getNorthings(){
+		System.out.println("Northings");
+		int i;
+		double sum = 0;
+		for(i=0; i<array7.length; i++){
+			sum +=array7[i];
+			double[] totalCN = {sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum,sum};
+			double[] totalDis = {N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1,N1};
+			Northings[i]=totalDis[i]+totalCN[i];
+			System.out.println(Northings[i]);			
+		}
+		return;
+		}
+		
+	}
+
+
+
+
 
